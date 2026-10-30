@@ -65,22 +65,9 @@
             color: var(--text-muted);
         }
 
-        .music-player button {
-            background: var(--accent-rose);
-            border: none;
-            color: #fff;
-            width: 32px;
+        .music-player audio {
+            width: 180px;
             height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-
-        .music-player button:hover {
-            transform: scale(1.08);
         }
 
         /* Passcode Screen */
@@ -206,30 +193,36 @@
                     <span>🎵</span>
                     <span>not because - kanegi.</span>
                 </div>
-                <button id="play-btn" onclick="toggleAudio()">▶</button>
+                <!-- Native audio element ensures playback works smoothly -->
+                <audio id="bg-audio" controls loop>
+                    <source src="https://cdns.eu.org/file/kanegi-not-because.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
 
             <div class="letter-header">
-                <h1>To my dearest Wawa,</h1>
+                <h1>To my dearest wawa,</h1>
             </div>
 
             <div class="letter-body">You might not understand the logic again behind my crazy antics like this but, I just wanted to let you know:
-That I realized something, ahahahahaha you know I was anxious last last night, because I wasn’t used to the silence in call and I don’t understand how it is okay, like how can u be okay with me not talking? When im going crazy thinking I will just waste ur time? I know yeah im dumb, I know, idiot me, cos only after last night did I realize how your presence means so much to me, even if we are not talking just knowing you are on the other side it feels so much better. Idk why T.T maybe because I wasn't feeling well yesterday? I am so used to making myself better, like I am not allowed to be sick because no one is there for me to lean on? Then suddenly I have you who worries about me too? Haiya! I didn’t know that its normal to be speechless at times? cos its not everyday we can talk so much, and we sometimes could run out of things we can talk about. But you being there really makes a big difference. I love u when ur chaotic and I love you when ur calm and quiet. I'm still learning I hope u don’t mind me being slow ☺️</div>
+That I realized something, ahahahahaha you know I was anxious last last night, because I wasn’t used to the silence in call and I don’t understand how it is okay, like how can u be okay with me not talking? When im going crazy thinking I will just waste ur time? I know yeah im dumb, I know, idiot me. 
+                Cos only after last night did I realize how your presence means so much to me, even if we are not talking just knowing you are on the other side it feels so much better. 
+                Idk why T.T but maybe because I wasn't feeling well yesterday so I am emotional and realizing things? Becos I am so used to making myself better, like I am not allowed to be sick because no one is there for me to lean on? 
+                Then suddenly I have you who worries about me too? Hayssst! 
+                I didn’t know that its normal to be speechless at times? cos its not everyday we can talk so much, and we sometimes could run out of things we can talk about. But you being there really makes a big difference. 
+                
+                I love u when ur chaotic and I love you when ur calm and quiet. 
+                
+                I'm still learning I hope u don’t mind me being slow ☺️</div>
 
             <div class="signature">From Jaja</div>
         </div>
     </div>
 
-    <!-- Hidden YouTube Audio Player -->
-    <div style="display:none;">
-        <iframe id="yt-audio" width="0" height="0" src="https://www.youtube.com/embed/ZY84RInuj30?enablejsapi=1&autoplay=0&loop=1&playlist=ZY84RInuj30" frameborder="0"></iframe>
-    </div>
-
     <script>
-        const CORRECT_PIN = "1234"; // You can change this 4-digit code if you want!
+        const CORRECT_PIN = "0916"; // Default passcode
         const inputs = document.querySelectorAll('.pin-input');
         const errorMsg = document.getElementById('error-msg');
-        let audioPlaying = false;
 
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
@@ -253,31 +246,11 @@ That I realized something, ahahahahaha you know I was anxious last last night, b
                 if (entered === CORRECT_PIN) {
                     document.getElementById('passcode-screen').style.display = 'none';
                     document.getElementById('letter-screen').style.display = 'block';
-                    // Auto-play music on success
-                    try {
-                        const iframe = document.getElementById('yt-audio');
-                        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                        audioPlaying = true;
-                        document.getElementById('play-btn').innerText = '❚❚';
-                    } catch(e) {}
                 } else {
                     errorMsg.innerText = "Incorrect passcode, try again! (Hint: it's 1234)";
                     inputs.forEach(i => i.value = '');
                     inputs[0].focus();
                 }
-            }
-        }
-
-        function toggleAudio() {
-            const iframe = document.getElementById('yt-audio');
-            if (audioPlaying) {
-                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                document.getElementById('play-btn').innerText = '▶';
-                audioPlaying = false;
-            } else {
-                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                document.getElementById('play-btn').innerText = '❚❚';
-                audioPlaying = true;
             }
         }
     </script>
