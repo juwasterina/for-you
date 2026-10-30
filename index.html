@@ -204,11 +204,11 @@
 
         <!-- Letter Screen -->
         <div id="letter-screen">
-            <!-- YouTube Music Embed Player -->
+            <!-- YouTube Music Player Box -->
             <div class="music-box">
                 <p>🎵 kanegi. - not because</p>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/ZY84RInuj30?si=Td9jqjM8rcw7PGSt&amp;start=23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/ZY84RInuj30" title="kanegi. - not because" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -225,50 +225,4 @@
                 
                 Then suddenly I have you who worries about me too? Hayssst! 
                 
-                I didn’t know that its normal to be speechless at times? cos its not everyday we can talk so much, and we sometimes could run out of things we can talk about. But you being there really makes a big difference. 
-                
-                I love u when ur chaotic and I love you when ur calm and quiet. 
-                
-                I'm still learning I hope u don’t mind me being slow ☺️</div>
-
-            <div class="signature">From Jaja</div>
-        </div>
-    </div>
-
-    <script>
-        const CORRECT_PIN = "0916"; // Passcode set to 0916
-        const inputs = document.querySelectorAll('.pin-input');
-        const errorMsg = document.getElementById('error-msg');
-
-        inputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                const val = e.target.value;
-                if (val && index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
-                checkPin();
-            });
-
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !input.value && index > 0) {
-                    inputs[index - 1].focus();
-                }
-            });
-        });
-
-        function checkPin() {
-            let entered = Array.from(inputs).map(i => i.value).join('');
-            if (entered.length === 4) {
-                if (entered === CORRECT_PIN) {
-                    document.getElementById('passcode-screen').style.display = 'none';
-                    document.getElementById('letter-screen').style.display = 'block';
-                } else {
-                    errorMsg.innerText = "Incorrect passcode, try again!";
-                    inputs.forEach(i => i.value = '');
-                    inputs[0].focus();
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+                I didn’t know that its normal to be speechless at times? cos its not everyday we can talk so much, and we sometimes could run out of things we can
