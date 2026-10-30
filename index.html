@@ -51,23 +51,40 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Music Player Bar */
-        .music-player {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* Music Player Box */
+        .music-box {
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
-            padding: 12px 18px;
-            border-radius: 50px;
+            padding: 15px;
+            border-radius: 16px;
             margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            text-align: center;
         }
 
-        .music-player audio {
-            width: 170px;
-            height: 32px;
+        .music-box p {
+            font-size: 0.9rem;
+            color: var(--accent-rose);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
         }
 
         /* Passcode Screen */
@@ -187,15 +204,12 @@
 
         <!-- Letter Screen -->
         <div id="letter-screen">
-            <!-- Music Player Bar with Song Title -->
-            <div class="music-player">
-                <div style="display: flex; align-items: center; gap: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <span>🎵</span>
-                    <span style="color: var(--text-main); font-weight: 500;">kanegi. - not because</span>
+            <!-- YouTube Music Embed Player -->
+            <div class="music-box">
+                <p>🎵 kanegi. - not because</p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ZY84RInuj30?si=Td9jqjM8rcw7PGSt&amp;start=23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                <audio controls loop>
-                    <source src="https://cdns.eu.org/file/kanegi-not-because.mp3" type="audio/mpeg">
-                </audio>
             </div>
 
             <div class="letter-header">
